@@ -5,7 +5,6 @@ cascade:
     path: "/**"
 title: LingoDB
 linkTitle: Docs
-menu: {main: {weight: 20}}
 weight: 20
 ---
 LingoDB is a data processing engine currently developed at [TUM's database group](https://db.in.tum.de).

@@ -1,5 +1,5 @@
 baseURL = "/"
-title = "LingoDB"
+title = "LingoDB Documentation"
 
 # Language settings
 contentDir = "content"
@@ -55,16 +55,6 @@ anchor = "smart"
 # Comment out the next line to disable GA tracking. Also disables the feature described in [params.ui.feedback].
 #id = "UA-00000000-0"
 
-# Language configuration
-
-[languages]
-[languages.en]
-languageName ="English"
-# Weight used for sorting.
-weight = 1
-[languages.en.params]
-title = "Goldydocs"
-description = "Documentation for LingoDB"
 
 [markup]
   [markup.goldmark]
@@ -164,6 +154,17 @@ no = 'Sorry to hear that. Please <a href="https://github.com/USERNAME/REPOSITORY
 # add "hide_readingtime: true" to the page's front matter
 [params.ui.readingtime]
 enable = false
+
+[[menu.main]]
+    name = "Website"
+    weight = 1
+    url = "https://www.lingo-db.com"
+
+[[menu.main]]
+    name = "GitHub"
+    weight = 50
+    url = "https://github.com/lingo-db/lingo-db/"
+    pre = "<i class='fa-brands fa-github'></i>"
 
 [params.links]
 # End user relevant links. These will show up on left side of footer and in the community page if you have one.

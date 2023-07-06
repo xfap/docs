@@ -81,3 +81,21 @@ con.mlir("""module {
 """)
 
 ```
+## Querying PyArrow Tables/Pandas DataFrames
+Apache Arrow tables can be imported using the `add_table` method. This also enables querying of pandas dataframes through pyarrow.
+
+```py
+import pandas as pd
+df = pd.DataFrame(data={'col1': [1, 2, 3, 4], 'col2': ["foo", "foo", "bar", "bar"]})
+
+con = lingodb.create_in_memory()
+#convert data frame to pyarrow table
+arrow_table=pa.Table.from_pandas(df)
+con.add_table("df",arrow_table)
+#query just as any other table
+print(con.sql("select * from df").to_pandas())
+```
+Furthermore, the rows of an pyarrow table can be added to an existing table (import) using the `append_table` method:
+```py
+con.append_table("df",arrow_table)
+```

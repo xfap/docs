@@ -24,7 +24,7 @@ The docker image then contains all the command line tools under `/build/lingodb/
     1. oneTBB: [Build from source](https://github.com/oneapi-src/oneTBB/blob/master/INSTALL.md) or get from [Intel](https://www.intel.com/content/www/us/en/developer/articles/tool/oneapi-standalone-components.html#onetbb)
     1. Apache Arrow 12.0.1 : either install [prebuilt C++ packages](https://arrow.apache.org/install/) or build it from source (see below)
     1. standard build tools, including `cmake` and `Ninja`
-1. Build LLVM/MLIR: `make build_mlir`
+1. Build LLVM/MLIR: `make build_llvm`
 1. Build LingoDB
     * Debug Version : `make build-debug` (will create binaries under `build/lingodb-debug`)
     * Release Version : `make build-release` (will create binaries under `build/lingodb-release`)

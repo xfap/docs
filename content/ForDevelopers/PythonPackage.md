@@ -24,24 +24,18 @@ python -m build .
 ```
 
 ## Building `lingodb-bridge`
-Building a python binary wheel is non-trivial but becomes easy with our [docker image](https://github.com/orgs/lingo-db/packages/container/package/python-buildimg). Just execute the following commands at the repository's root:
+Building a python binary wheel is non-trivial but becomes easy with the docker image we prepared. Just execute the following commands at the repository's root:
 ```sh
-docker pull ghcr.io/lingo-db/python-buildimg:latest
-docker run --rm -v "$(pwd):/repo" -v "$(pwd):/built-packages" python-buildimg create_package.sh PYVERSION
+make build-py-bridge PYVERSION=[VERSION]
 ```
-where `PYVERSION` is one of:
-* `cp39-cp39`: for Python 3.9
+where `[VERSION]` is one of:
+* `39-cp39`: for Python 3.9
 * `cp310-cp310`: for Python 3.11
 * `cp311-cp311`: for Python 3.12
 
-This will then create a wheel in the current directory that can be installe, e.g.:
+This will then create a wheel in the current directory that can be installed, e.g.:
 ```
 pip install lingodb_bridge-0.0.0-cp310-cp310-manylinux_2_28_x86_64.whl
 ```
 
-### Building the docker image
-For building the docker image, just execute the following command at the repo's root directory.
-```sh
-docker build -t python-buildimg -f "tools/python/Dockerfile" .
-```
 

@@ -29,9 +29,9 @@ Building a python binary wheel is non-trivial but becomes easy with the docker i
 make build-py-bridge PYVERSION=[VERSION]
 ```
 where `[VERSION]` is one of:
-* `39-cp39`: for Python 3.9
-* `cp310-cp310`: for Python 3.11
-* `cp311-cp311`: for Python 3.12
+* `310`: for Python 3.10
+* `311`: for Python 3.11
+* `312`: for Python 3.12
 
 This will then create a wheel in the current directory that can be installed, e.g.:
 ```

@@ -38,3 +38,23 @@ MLIR modules can be executed using the `run-mlir` binary. A database directory c
 $ run-sql SQL-File [DBDIR]
 ```
 Single (read-only) SQL queries can be run with the `run-sql` utlity. If the query requires a database, the corresponding database directory must be provided as second argument.
+
+
+## The Trace of a Query
+With the following commands you can explore how a SQL query gets compiled layer by layer by looking at the different files:
+```sh
+# write example query to file
+$ echo "select * from studenten where name='Carnap'" > test.sql
+# translate sql to canonical MLIR module
+$ sql-to-mlir test.sql resources/data/uni/ > canonical.mlir
+# perform query optimization
+$ mlir-db-opt --use-db resources/data/uni/ --relalg-query-opt canonical.mlir > optimized.mlir
+# lower relational operators to sub-operators
+$ mlir-db-opt --lower-relalg-to-subop optimized.mlir > subop.mlir
+# lower sub-operators to imperative code
+$ mlir-db-opt --lower-subop subop.mlir > hl-imperative.mlir
+# lower database-specific scalar operations
+$ mlir-db-opt --lower-db hl-imperative.mlir > ml-imperative.mlir
+# lower mid-level abstraction (such as arrow tables) to low-level imperative code
+$ mlir-db-opt --lower-dsa ml-imperative.mlir > ll-imperative.mlir
+```
